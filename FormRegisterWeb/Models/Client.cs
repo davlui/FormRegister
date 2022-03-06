@@ -1,10 +1,16 @@
-﻿namespace FormRegisterWeb.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FormRegisterWeb.Models
 {
     public class Client
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string Email { get; set; }
         public int Phone { get; set; }
         public int Age { get; set; }
