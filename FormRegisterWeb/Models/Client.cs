@@ -12,12 +12,12 @@ namespace FormRegisterWeb.Models
         public string LastName { get; set; }
         [Required]
         public string Email { get; set; }
-        public int Phone { get; set; }
-        public int Age { get; set; }
-        public string Sex { get; set; } 
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string PostalCode { get; set; }
-        public string Country { get; set; }
+        public int? Phone { get; set; } 
+        public int? Age { get; set; }
+        public string? Sex { get; set; }
+        public string? Address { get; set; }
+        public string? City { get; set; } 
+        public string? PostalCode { get; set; }
+        public string? Country { get; set; }
     }
 }
