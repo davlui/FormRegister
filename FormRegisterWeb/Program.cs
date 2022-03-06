@@ -1,4 +1,6 @@
 using FormRegisterWeb.Data;
+using FormRegisterWeb.Repositories;
+using FormRegisterWeb.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
        builder.Configuration.GetConnectionString("DefaultConnection")
        );
 });
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
 
 var app = builder.Build();
 
