@@ -43,7 +43,22 @@
                                 <span asp-validation-for="Age" class="text-danger"></span>
                             </div>
                         </div>
-                    </div>                    
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label asp-for="Sex">Sexo</label>
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select asp-for="Sex">
+                                            <option>Masculino</option>
+                                            <option>Femenino</option>
+                                            <option>Outro</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row row-space">
                         <div class="col-12">
                             <div class="input-group">
@@ -69,7 +84,7 @@
                             <div class="input-group">
                                 <input class="input--style-2" type="text" placeholder="Pais" asp-for="Country">
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="p-t-30">
                         <button class="btn btn--radius btn-primary" type="submit">Enviar</button>

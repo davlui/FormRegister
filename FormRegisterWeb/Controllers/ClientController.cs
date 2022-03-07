@@ -18,5 +18,12 @@ namespace FormRegisterWeb.Controllers
 
             return View(clients);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var client = _repository.GetClientById(id);
+
+            return View(client);
+        }
     }
 }
