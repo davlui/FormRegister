@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FormRegisterWeb.Repositories.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FormRegisterWeb.Controllers
 {
     public class ClientController : Controller
     {
+        private readonly IClientRepository _repository;
+
+        public ClientController(IClientRepository repository)
+        {
+            _repository = repository;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var clients = _repository.GetClients();
+
+            return View(clients);
         }
     }
 }

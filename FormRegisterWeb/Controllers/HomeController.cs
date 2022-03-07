@@ -28,6 +28,11 @@ namespace FormRegisterWeb.Controllers
             if (!ModelState.IsValid) return View(client);
 
             _repository.AddClient(client);
+            return RedirectToAction("Sended");
+        }
+
+        public IActionResult Sended()
+        {
             return View();
         }
 

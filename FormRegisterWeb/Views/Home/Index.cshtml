@@ -1,9 +1,9 @@
 ﻿@model Client
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Registo";
 }
 
-<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+<div class="page-wrapper bg-blue pt-150 font-robo">
     <div class="wrapper wrapper--w960">
         <div class="card card-2">
             <div class="card-heading"></div>
@@ -14,9 +14,11 @@
                         <div class="input-group">
                             <div class="col-2">
                                 <input class="input--style-2 me-2" type="text" placeholder="Nome" asp-for="FirstName">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
                             <div class="col-2">
                                 <input class="input--style-2" type="text" placeholder="Apelido" asp-for="LastName">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -24,9 +26,24 @@
                         <div class="col-12">
                             <div class="input-group">
                                 <input class="input--style-2" type="text" placeholder="Email" asp-for="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" type="text" placeholder="Nº Telefone" asp-for="Phone">
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" placeholder="Idade" asp-for="Age">
+                                <span asp-validation-for="Age" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>                    
                     <div class="row row-space">
                         <div class="col-12">
                             <div class="input-group">
@@ -38,26 +55,35 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <input class="input--style-2" type="text" placeholder="Código Postal" asp-for="PostalCode">
+                                <span asp-validation-for="PostalCode" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="input-group">
-                                <input class="input--style-2" type="text" placeholder="localidade" asp-for="City">
+                                <input class="input--style-2" type="text" placeholder="Localidade" asp-for="City">
                             </div>
                         </div>
                     </div>
                     <div class="row row-space">
-                        <div class="col-2">
+                        <div class="col-4">
                             <div class="input-group">
-                                <input class="input--style-2" type="text" placeholder="Nº Telefone" asp-for="Phone">
+                                <input class="input--style-2" type="text" placeholder="Pais" asp-for="Country">
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                     <div class="p-t-30">
-                        <button class="btn btn--radius btn--green" type="submit">Enviar</button>
+                        <button class="btn btn--radius btn-primary" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}
+
+

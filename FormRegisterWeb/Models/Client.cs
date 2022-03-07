@@ -6,13 +6,16 @@ namespace FormRegisterWeb.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Preenchimento obrigatório")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Preenchimento obrigatório")]
         public string LastName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Preenchimento obrigatório")]
+        [EmailAddress(ErrorMessage = "Não é um email válido.")]
         public string Email { get; set; }
+        [RegularExpression(@"^(\d{9})$", ErrorMessage = "Não é um numero de telefone.")]
         public int? Phone { get; set; } 
+        [Range(18,999,ErrorMessage = "Têm de ser maior de idade.")]
         public int? Age { get; set; }
         public string? Sex { get; set; }
         public string? Address { get; set; }
