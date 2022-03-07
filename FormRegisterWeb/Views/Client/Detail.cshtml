@@ -92,8 +92,31 @@
     </div>
     <div class="m-3 align-content-center">
         <a class="btn btn-primary pe-2" asp-action="Edit" asp-route-id="@Model?.Id">Alterar</a>
-        <a class="btn btn-danger pe-2" asp-action="Edit" asp-route-id="@Model?.Id">Apagar</a>
+        <button type="button" class="btn btn-danger pe-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Apagar</button>
         <a style="color:black" class="btn btn-light" role="button" asp-action="Index">Voltar</a>
     </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apagar Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Têm a certeza que deseja<br /> apagar o cliente: @Model.FirstName @Model.LastName ?
+            </div>
+            <div class="modal-footer">
+                <form method="post">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-route-id="@Model?.Id">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

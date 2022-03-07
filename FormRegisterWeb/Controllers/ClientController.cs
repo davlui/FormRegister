@@ -64,5 +64,34 @@ namespace FormRegisterWeb.Controllers
             return View(obj);
         }
 
+
+        // GET
+        [HttpGet]
+        public IActionResult Delete2(int id)
+        {
+            if (id == 0) return NotFound();
+
+            var client = _repository.GetClientById(id);
+
+            if (client == null) return NotFound();
+
+            return View(client);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteClient(int id)
+        {
+            if(id == 0) return NotFound();
+
+            var client = _repository.GetClientById(id);
+
+            if (client == null) return NotFound();
+            
+            _repository.DeleteClient(client);
+            return RedirectToAction("Index");
+        }
+
     }
 }
