@@ -15,11 +15,11 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("INT");
 
             builder.Property(x => x.CreatedDate)
-                .HasColumnName("created_date")
+                .HasColumnName("Created_Date")
                 .HasColumnType("datetime");
 
             builder.Property(x => x.ModifiedDate)
-                .HasColumnName("modified_date")
+                .HasColumnName("Modified_Date")
                 .HasColumnType("datetime");
 
         }

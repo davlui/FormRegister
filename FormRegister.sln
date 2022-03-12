@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterAPI", "RegisterAPI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{66C8AC58-8458-4DA2-8383-C71190622CA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryLayer", "RepositoryLayer\RepositoryLayer.csproj", "{D05499C7-17AA-4937-88B8-C224AE03CF00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{66C8AC58-8458-4DA2-8383-C71190622CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66C8AC58-8458-4DA2-8383-C71190622CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66C8AC58-8458-4DA2-8383-C71190622CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D05499C7-17AA-4937-88B8-C224AE03CF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D05499C7-17AA-4937-88B8-C224AE03CF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D05499C7-17AA-4937-88B8-C224AE03CF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D05499C7-17AA-4937-88B8-C224AE03CF00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
