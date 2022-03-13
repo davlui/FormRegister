@@ -14,7 +14,7 @@ namespace RepositoryLayer.Repository
             entities = _context.Set<T>();
         }
 
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
             if(entity == null)
             {
@@ -22,54 +22,54 @@ namespace RepositoryLayer.Repository
             }
 
             entities.Remove(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            return entities.SingleOrDefault(x => x.Id == id);
+            return await entities.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public IEnumerable<T> GetAll()
+        public Task<IEnumerable<T>> GetAll()
         {
-            return entities.AsEnumerable();
+            return (Task<IEnumerable<T>>)entities.AsAsyncEnumerable();
         }
 
-        public void Insert(T entity)
+        public async Task Insert(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException(nameof(entity));
             }
             
-            entities.Add(entity);
-            _context.SaveChanges();
+            await entities.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public void Remove(T entity)
+        public async Task Remove(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            entities.Remove(entity);
+            await Task.Run( () => entities.Remove(entity));
         }
 
-        public void SaveChanges()
+        public async Task SaveChanges()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            entities.Update(entity);
-            _context.SaveChanges();
+            await Task.Run(() => entities.Update(entity));
+            await _context.SaveChangesAsync();
         }
     }
 }

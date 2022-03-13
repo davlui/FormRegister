@@ -33,10 +33,15 @@ namespace RegisterAPI.Controllers
             var result = _clientService.GetAllClients();
             if (result is not null)
             {
+                if (result.Count() == 0)
+                {
+                    return NoContent();
+                }
+
                 return Ok(result);
             }
 
-            return NoContent();
+            return BadRequest("Service Failed");
         }
 
         [HttpPost]
@@ -61,7 +66,6 @@ namespace RegisterAPI.Controllers
             {
                 return NotFound();
             }
-
 
             _clientService.DeleteClient(id);
             return NoContent();
