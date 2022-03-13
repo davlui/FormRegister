@@ -5,13 +5,15 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormRegisterWeb", "FormRegisterWeb\FormRegisterWeb.csproj", "{830E26FF-D5D4-4679-B1A9-6FC07E3BC1C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterAPI", "RegisterAPI\RegisterAPI.csproj", "{DFDAD675-9F5E-44B6-B376-C2395E5E6FB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegisterAPI", "RegisterAPI\RegisterAPI.csproj", "{DFDAD675-9F5E-44B6-B376-C2395E5E6FB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{66C8AC58-8458-4DA2-8383-C71190622CA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{66C8AC58-8458-4DA2-8383-C71190622CA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryLayer", "RepositoryLayer\RepositoryLayer.csproj", "{D05499C7-17AA-4937-88B8-C224AE03CF00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryLayer", "RepositoryLayer\RepositoryLayer.csproj", "{D05499C7-17AA-4937-88B8-C224AE03CF00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{967B6519-07A6-4A91-82BD-9D936E3D00CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{967B6519-07A6-4A91-82BD-9D936E3D00CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterAPI.Test", "RegisterAPI.Test\RegisterAPI.Test.csproj", "{1DEFDB08-3738-4BE1-A15C-6C440B100E8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{967B6519-07A6-4A91-82BD-9D936E3D00CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{967B6519-07A6-4A91-82BD-9D936E3D00CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{967B6519-07A6-4A91-82BD-9D936E3D00CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DEFDB08-3738-4BE1-A15C-6C440B100E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DEFDB08-3738-4BE1-A15C-6C440B100E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DEFDB08-3738-4BE1-A15C-6C440B100E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DEFDB08-3738-4BE1-A15C-6C440B100E8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
