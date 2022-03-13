@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
+using RepositoryLayer.Repository;
+using ServiceLayer.ClientService;
+using ServiceLayer.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(item =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddTransient<IClientService, ClientService>();
+builder.Services.AddAutoMapper(typeof(ClientProfile));
 
 var app = builder.Build();
 
