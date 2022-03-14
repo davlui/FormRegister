@@ -17,42 +17,42 @@ namespace ServiceLayer.ClientService
             _mapper = mapper;
         }
 
-        public void DeleteClient(int id)
+        public async Task DeleteClient(int id)
         {
-            var client = _repository.Get(id);
-            _repository.Remove(client);
-            _repository.SaveChanges();
+            var client = await _repository.Get(id);
+            await _repository.Remove(client);
+            await _repository.SaveChanges();
         }
 
-        public IEnumerable<ClientDto> GetAllClients()
+        public async Task<IEnumerable<ClientDto>> GetAllClients()
         {
-            var clients = _repository.GetAll();
+            var clients = await _repository.GetAll();
 
             return _mapper.Map<List<ClientDto>>(clients);
         }
 
-        public ClientDetailsDto GetClientById(int id)
+        public async Task<ClientDetailsDto> GetClientById(int id)
         {
-            var client = _repository.Get(id);
+            var client = await _repository.Get(id);
 
             var _mappedClient = _mapper.Map<ClientDetailsDto>(client);
 
             return _mappedClient;
         }
 
-        public void InsertClient(ClientDetailsDto client)
+        public async Task InsertClient(ClientDetailsDto client)
         {
             var _mappedClient = _mapper.Map<Client>(client);
 
-            _repository.Insert(_mappedClient);
+            await _repository.Insert(_mappedClient);
         }
 
-        public void UpdateClient(ClientDetailsDto client)
+        public async Task UpdateClient(ClientDetailsDto client)
         {
             var _mappedClient = _mapper.Map<Client>(client);
 
-            _repository.Update(_mappedClient);
-            _repository.SaveChanges();
+            await _repository.Update(_mappedClient);
+            await _repository.SaveChanges();
         }
     }
 }

@@ -30,9 +30,9 @@ namespace RepositoryLayer.Repository
             return await entities.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return (Task<IEnumerable<T>>)entities.AsAsyncEnumerable();
+            return await Task.Run(() => entities.AsEnumerable());
         }
 
         public async Task Insert(T entity)

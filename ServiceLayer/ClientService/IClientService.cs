@@ -4,10 +4,10 @@ namespace ServiceLayer.ClientService
 {
     public interface IClientService
     {
-        IEnumerable<ClientDto> GetAllClients();
-        ClientDetailsDto GetClientById(int id);
-        void InsertClient(ClientDetailsDto client);
-        void UpdateClient(ClientDetailsDto client);
-        void DeleteClient(int id);
+        Task<IEnumerable<ClientDto>> GetAllClients();
+        Task<ClientDetailsDto> GetClientById(int id);
+        Task InsertClient(ClientDetailsDto client);
+        Task UpdateClient(ClientDetailsDto client);
+        Task DeleteClient(int id);
     }
 }

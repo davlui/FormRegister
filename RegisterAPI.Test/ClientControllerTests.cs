@@ -13,7 +13,7 @@ namespace RegisterAPI.Test
     {
         #region GetAllClients
         [Fact]
-        public void GetAllClients_Returns_Simplefied_List_Of_Clients()
+        public async void GetAllClients_Returns_Simplefied_List_Of_Clients()
         {
             // Arrange
             var clients = A.CollectionOfDummy<ClientDto>(2).AsEnumerable();
@@ -27,14 +27,14 @@ namespace RegisterAPI.Test
             var actionResult = controller.GetAllClients();
 
             // Assert
-            var result = actionResult as OkObjectResult;
+            var result = await actionResult as OkObjectResult;
 
             Assert.Equal(200, result.StatusCode);
         }
 
 
         [Fact]
-        public void GetAllClients_Returns_Simplefied_No_List_Of_Clients()
+        public async void GetAllClients_Returns_Simplefied_No_List_Of_Clients()
         {
             // Arrange
             var clients = A.CollectionOfDummy<ClientDto>(0).AsEnumerable();
@@ -48,19 +48,19 @@ namespace RegisterAPI.Test
             var actionResult = controller.GetAllClients();
 
             // Assert
-            var result = actionResult as NoContentResult;
+            var result = await actionResult as NoContentResult;
 
             Assert.Equal(204,result.StatusCode);
         }
 
 
         [Fact]
-        public void GetAllClients_Where_Null_Service()
+        public async void GetAllClients_Where_Null_Service()
         {
             // Arrange
 
             var fakeService = A.Fake<IClientService>();
-            A.CallTo(() => fakeService.GetAllClients()).Returns(null);
+            A.CallTo(() => fakeService.GetAllClients()).ReturnsLazily(null);
 
             var controller = new ClientController(fakeService);
 
@@ -68,7 +68,7 @@ namespace RegisterAPI.Test
             var actionResult = controller.GetAllClients();
 
             // Assert
-            var result = actionResult as BadRequestObjectResult;
+            var result = await actionResult as BadRequestObjectResult;
 
             Assert.Equal(400, result.StatusCode);
         }
@@ -102,7 +102,7 @@ namespace RegisterAPI.Test
             // Arrange
 
             var fakeService = A.Fake<IClientService>();
-            A.CallTo(() => fakeService.GetClientById(1)).Returns(null);
+            A.CallTo(() => fakeService.GetClientById(1)).ReturnsLazily(null);
 
             var controller = new ClientController(fakeService);
 

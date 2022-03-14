@@ -28,9 +28,9 @@ namespace RegisterAPI.Controllers
 
 
         [HttpGet(Name = "GetAll")]
-        public IActionResult GetAllClients()
+        public async Task<IActionResult> GetAllClients()
         {
-            var result = _clientService.GetAllClients();
+            var result = await _clientService.GetAllClients();
             if (result is not null)
             {
                 if (result.Count() == 0)
@@ -45,29 +45,29 @@ namespace RegisterAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult InsertClient([FromBody] ClientDetailsDto client)
+        public async Task<IActionResult> InsertClient([FromBody] ClientDetailsDto client)
         {
-            _clientService.InsertClient(client);
+            await _clientService.InsertClient(client);
             return Ok("New client created.");
         }
 
 
         [HttpPut]
-        public IActionResult UpdateCLient(ClientDetailsDto client)
+        public async Task<IActionResult> UpdateCLient(ClientDetailsDto client)
         {
-            _clientService.UpdateClient(client);
+            await _clientService.UpdateClient(client);
             return Ok("Updated done");
         }
 
         [HttpDelete]
-        public IActionResult DeleteClient(int id)
+        public async Task<IActionResult> DeleteClient(int id)
         {
             if (id == 0)
             {
                 return NotFound();
             }
 
-            _clientService.DeleteClient(id);
+            await _clientService.DeleteClient(id);
             return NoContent();
 
         }
