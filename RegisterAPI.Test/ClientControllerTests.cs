@@ -102,17 +102,25 @@ namespace RegisterAPI.Test
             // Arrange
 
             var fakeService = A.Fake<IClientService>();
-            A.CallTo(() => fakeService.GetClientById(1)).ReturnsLazily(null);
+            A.CallTo(() => fakeService.GetClientById(1)).Returns<ClientDetailsDto?>(null);
 
             var controller = new ClientController(fakeService);
 
             // Act
-            var actionResult = await controller.GetClient(1);
+            var actionResult = await controller.GetClient(2);
 
             // Assert
             var result = actionResult as NotFoundObjectResult;
 
             Assert.Equal(404, result.StatusCode);
+        }
+
+        #endregion
+
+        #region GetClientById
+        public async void GetClientById_Returns()
+        {
+
         }
 
         #endregion
