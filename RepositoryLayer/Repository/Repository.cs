@@ -41,7 +41,7 @@ namespace RepositoryLayer.Repository
             {
                 throw new ArgumentNullException(nameof(entity));
             }
-            
+
             await entities.AddAsync(entity);
             await _context.SaveChangesAsync();
         }

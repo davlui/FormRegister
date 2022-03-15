@@ -77,7 +77,7 @@ namespace RegisterAPI.Test
 
         #region GetClient
         [Fact]
-        public void GetClient_Returns_Detaild_Client()
+        public async void GetClient_Returns_Detaild_Client()
         {
             // Arrange
             var client = A.Dummy<ClientDetailsDto>();
@@ -88,7 +88,7 @@ namespace RegisterAPI.Test
             var controller = new ClientController(fakeService);
 
             // Act
-            var actionResult = controller.GetClient(client.Id);
+            var actionResult = await controller.GetClient(client.Id);
 
             // Assert
             var result = actionResult as OkObjectResult;
@@ -97,7 +97,7 @@ namespace RegisterAPI.Test
         }
 
         [Fact]
-        public void GetClient_Not_Found_Detaild_Client()
+        public async void GetClient_Not_Found_Detaild_Client()
         {
             // Arrange
 
@@ -107,7 +107,7 @@ namespace RegisterAPI.Test
             var controller = new ClientController(fakeService);
 
             // Act
-            var actionResult = controller.GetClient(1);
+            var actionResult = await controller.GetClient(1);
 
             // Assert
             var result = actionResult as NotFoundObjectResult;

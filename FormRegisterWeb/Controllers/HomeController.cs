@@ -8,9 +8,9 @@ namespace FormRegisterWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IClientRepository _repository;
+        private readonly IRepository _repository;
 
-        public HomeController(ILogger<HomeController> logger, IClientRepository repository)
+        public HomeController(ILogger<HomeController> logger, IRepository repository)
         {
             _logger = logger;
             _repository = repository;
@@ -23,11 +23,11 @@ namespace FormRegisterWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(Client client)
+        public async Task<IActionResult> Index(Client client)
         {
             if (!ModelState.IsValid) return View(client);
 
-            _repository.AddClient(client);
+            await _repository.AddClient(client);
             return RedirectToAction("Sended");
         }
 

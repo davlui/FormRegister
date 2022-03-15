@@ -15,9 +15,10 @@ namespace RegisterAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetClient(int id)
+        public async Task<IActionResult> GetClient(int id)
         {
-            var result = _clientService.GetClientById(id);
+            var result = await _clientService.GetClientById(id);
+            
             if (result is not null)
             {
                 return Ok(result);
@@ -53,13 +54,13 @@ namespace RegisterAPI.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCLient(ClientDetailsDto client)
+        public async Task<IActionResult> UpdateCLient([FromBody] ClientDetailsDto client)
         {
             await _clientService.UpdateClient(client);
             return Ok("Updated done");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClient(int id)
         {
             if (id == 0)

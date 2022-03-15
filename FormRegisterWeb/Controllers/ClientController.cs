@@ -6,25 +6,25 @@ namespace FormRegisterWeb.Controllers
 {
     public class ClientController : Controller
     {
-        private readonly IClientRepository _repository;
+        private readonly IRepository _repository;
 
-        public ClientController(IClientRepository repository)
+        public ClientController(IRepository repository)
         {
             _repository = repository;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var clients = _repository.GetClients();
+            var clients = await _repository.GetClients();
 
             return View(clients);
         }
 
         [HttpGet]
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
-            var client = _repository.GetClientById(id);
+            var client = await _repository.GetClientById(id);
 
             return View(client);
         }
@@ -32,14 +32,14 @@ namespace FormRegisterWeb.Controllers
 
         // GET
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == 0 || id == null)
             {
                 return NotFound();
             }
 
-            var client = _repository.GetClientById(id.Value);
+            var client = await _repository.GetClientById(id.Value);
 
             if (client == null)
             {
@@ -53,11 +53,11 @@ namespace FormRegisterWeb.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Client obj)
+        public async Task<IActionResult> Edit(Client obj)
         {
             if (ModelState.IsValid)
             {
-                _repository.UpdateClient(obj);
+                await _repository.UpdateClient(obj);
                 return RedirectToAction("Index");
             }
 
@@ -67,11 +67,11 @@ namespace FormRegisterWeb.Controllers
 
         // GET
         [HttpGet]
-        public IActionResult Delete2(int id)
+        public async Task<IActionResult> Delete2(int id)
         {
             if (id == 0) return NotFound();
 
-            var client = _repository.GetClientById(id);
+            var client = await _repository.GetClientById(id);
 
             if (client == null) return NotFound();
 
@@ -81,15 +81,12 @@ namespace FormRegisterWeb.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteClient(int id)
+        public async Task<IActionResult> DeleteClient(int id)
         {
             if(id == 0) return NotFound();
-
-            var client = _repository.GetClientById(id);
-
-            if (client == null) return NotFound();
+                        
+            await _repository.DeleteClientById(id);
             
-            _repository.DeleteClient(client);
             return RedirectToAction("Index");
         }
 

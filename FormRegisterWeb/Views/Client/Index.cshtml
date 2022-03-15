@@ -10,42 +10,45 @@
             <h2 class="text-primary">Lista de Clientes</h2>
         </div>
     </div>
-    <table class="table table-hover" style="width:100%">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Contacto</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var obj in Model)
-            {
+
+    @if (Model is not null)
+    {
+        <table class="table table-hover" style="width:100%">
+            <thead>
                 <tr>
-                    <td width="30%">
-                        @obj.FirstName @obj.LastName
-                    </td>
-                    <td>
-                        @obj.Email
-                    </td>
-                    <td>
-                        @if (obj.Phone != 0)
-                        {
-                            @obj.Phone    
-                        }
-                        
-                    </td>
-                    <td>
-                        <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Client" asp-action="Detail" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                                Mais info.
-                            </a>
-                        </div>
-                    </td>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td width="30%">
+                            @obj.FirstName @obj.LastName
+                        </td>
+                        <td>
+                            @obj.Email
+                        </td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Client" asp-action="Detail" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    Mais info.
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h2>Sem clientes registados.</h2>
+    }
+
+
+
 </div>
 

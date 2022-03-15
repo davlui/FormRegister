@@ -44,12 +44,19 @@ namespace ServiceLayer.ClientService
         {
             var _mappedClient = _mapper.Map<Client>(client);
 
+            _mappedClient.CreatedDate = DateTime.Now;
+            _mappedClient.ModifiedDate = DateTime.Now;
+
             await _repository.Insert(_mappedClient);
         }
 
         public async Task UpdateClient(ClientDetailsDto client)
         {
             var _mappedClient = _mapper.Map<Client>(client);
+
+            _mappedClient.CreatedDate = DateTime.Now;
+            _mappedClient.ModifiedDate = DateTime.Now;
+
 
             await _repository.Update(_mappedClient);
             await _repository.SaveChanges();
